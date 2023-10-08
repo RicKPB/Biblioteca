@@ -10,3 +10,12 @@ class Obra():
         self.idioma = ...
         self.dataPublicacao = ...
 
+    def adicionarTitulo(self, titulo):
+        self.titulo = titulo
+
+    def adicionarSinopse(self, sinopse):
+        self.sinopise = sinopse
+
+    def adicionarAutor(self, autor):
+        self.autor = autor
+        

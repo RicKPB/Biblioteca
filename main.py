@@ -1,13 +1,11 @@
-from usuario import Usuario
-from livro import Livro
-from autor import Autor
-from editora import Editora
+
 
 user = None
 autor_1 = None
 ediotra_1 = None
 
 while True:
+
 
     selecao = input('[L]ogin | [R]egistrar: ').upper()
 
@@ -67,12 +65,30 @@ while True:
             # ------------------CADASTRO EDITORA----------------------
             if comando == 'adicionar editora':
 
-                ediotra_1 = Editora
+                ediotra_1 = Editora()
 
                 ediotra_1.cadastroEditora('Nome Editar: ')
                 continue
             #--------------------------------------------------------
-            
+
+            # ------------------CADASTRO LIVRO----------------------
+            if comando == 'adicionar livro':
+
+                obra_1 = Obra()
+
+                obra_1.adicionarTitulo(input('Titulo: '))
+                obra_1.adicionarSinopse(input('Sinopse: '))
+                nomeTmp = input('Autor: ')
+
+                if nomeTmp == autor_1.nome:
+                    obra_1.adicionarAutor(autor_1)
+                
+                    print(obra_1.autor)
+
+                else:
+                    print('Autor nao existe')
+
+
         #--------------------FINALIZAR SISTEMA----------------------
         sair = input('[S]air: ').upper().startswith('S')
         if sair is True:
