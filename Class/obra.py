@@ -1,11 +1,10 @@
-from autor import Autor
-from editora import Editora
 
-class Obra():
-    def __init__(self, titulo, sinopise):
+
+class Obra:
+    def __init__(self, titulo, sinopise, editora, autor):
         self.titulo = titulo
-        self.editora = Editora()
-        self.autor = Autor()
+        self.editora = editora
+        self.autor = autor
         self.sinopise = sinopise
         self.idioma = ...
         self.dataPublicacao = ...

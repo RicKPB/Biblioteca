@@ -1,6 +1,6 @@
 from obra import Obra
 
-class Editora():
+class Editora:
     def __init__(self, nome):
         self.nome = nome
         self.obras = list(Obra())
