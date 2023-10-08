@@ -6,4 +6,4 @@ Sistema De Gestao de Biblioteca
 
     -Desenvolvedor Diagrama | Felipe Dos Santos
 
-    <img src="\Python\Biblioteca\img\image.png">
+   
