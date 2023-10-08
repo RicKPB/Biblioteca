@@ -5,3 +5,10 @@ class Autor():
         self.nome = nome
         self.obras = list(Obra)
         self.informacoes = informacoes
+
+    
+    def cadastroAutor(self, nome):
+        self.nome = nome
+    
+    def cadastroInformacoes(self, informacoes):
+        self.informacoes= informacoes
