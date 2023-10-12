@@ -3,6 +3,8 @@
 
 
 
+
+
 #----------------------------------------------------
 #                       AUTOR
 
@@ -16,8 +18,12 @@ class Autor:
     def cadastroAutor(self):
         self.nome = input('Nome: ')
     
-    def cadastroInformacoes(self):
+    def cadastroInformacoes(self,):
         self.informacoes = input('Informacoes: ')
+    
+    def adicionarObra(self, obra):
+        self.obras.append(obra)
+
 
 #----------------------------------------------------
 #                CONTROLADOR DE LIVROS
@@ -32,12 +38,10 @@ class ControladorLivros:
 class Editora:
     def __init__(self, nome):
         self.nome = nome
-        self.obras = Obra(titulo=None, sinopise=None)
+        self.obras = [Obra]
 
     def cadastroEditora(self):
         self.nome = input('Nome: ')
-
-  
 
 #----------------------------------------------------
 #                       lIVRO
@@ -54,8 +58,8 @@ class Livro:
 class Obra:
     def __init__(self, titulo, sinopise):
         self.titulo = titulo
-        self.editora = Autor(nome=None, informacoes=None)
-        self.autor = Editora(nome=None)
+        self.autor = Autor(nome=None, informacoes=None)
+        self.editora = Editora(nome=None)
         self.sinopise = sinopise
         self.idioma = ...
         self.dataPublicacao = ...
@@ -64,7 +68,7 @@ class Obra:
         self.titulo = input('Titulo do Livro: ')
 
     def adicionarSinopse(self):
-        self.sinopise = input('Sinopse: ')
+        self.sinopise = input('Sinopse:')
     
 
 #----------------------------------------------------

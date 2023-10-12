@@ -6,6 +6,12 @@ obra = Obra(titulo=None, sinopise=None)
 autor = Autor(nome=None, informacoes=None)
 editora = Editora(nome=None)
 
+autorTMP = Autor(nome=None, informacoes=None)
+
+lista_autores = []
+lista_editora = []
+lista_obras = []
+
 while True:
     selecao = input('[L]ogin | [R]egistrar | [F]inalizar: ').upper()
 
@@ -32,20 +38,31 @@ while True:
 
                     comando = input('Voce deseja realizar qual operacao: ')
 
+                    #           ADICIONAR OBRA
                     if comando == 'Adicionar Obra':
                         
                         obra.adicionarTitulo()
                         obra.adicionarSinopse()
+                        autorTMP.nome = input('Nome Autor: ')
+
+                        for nome_autor in lista_autores:
+                            if autorTMP.nome == nome_autor.nome:
+                                obra.autor = autorTMP
+                                print('Autor Adicionado')
                             
+            
+                    #           ADICIONAR AUTOR    
                     elif comando == 'Adicionar Autor':
                         
                         autor.cadastroAutor()
                         autor.cadastroInformacoes()
+                        lista_autores.append(autor)
 
                         if autor.nome == obra.autor.nome:
-                            # autor.obras.append()
-                            pass
+                            autor.adicionarObra(obra)
 
+
+                    #           ADICIONAR EDITORA
                     elif comando == 'Adicionar Editora':
                         
                         editora.cadastroEditora()
