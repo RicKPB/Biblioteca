@@ -36,13 +36,16 @@ while True:
                         
                         obra.adicionarTitulo()
                         obra.adicionarSinopse()
-
-
+                            
                     elif comando == 'Adicionar Autor':
                         
                         autor.cadastroAutor()
                         autor.cadastroInformacoes()
-                    
+
+                        if autor.nome == obra.autor.nome:
+                            # autor.obras.append()
+                            pass
+
                     elif comando == 'Adicionar Editora':
                         
                         editora.cadastroEditora()
@@ -71,52 +74,3 @@ while True:
     elif selecao == 'F':
         print('Sistema Finalizado')
         break
-
-
-
-
-
-
-
-
-
-#             # ------------------CADASTRO AUTOR----------------------
-#             if comando == 'adicionar autor':
-#                 autor_1 = Autor
-
-#                 print('Informacoes Livro')
-
-#                 autor_1.cadastroAutor(input('Nome Autor: '))
-#                 autor_1.cadastroInformacoes(input('Informacoes Autor: '))
-#                 continue
-#             # --------------------------------------------------------
-
-#             # ------------------CADASTRO EDITORA----------------------
-#             if comando == 'adicionar editora':
-#                 ediotra_1 = Editora
-
-#                 editora_1.cadastroEditora('Nome Editar: ')
-#                 continue
-#             # --------------------------------------------------------
-
-#             # ------------------CADASTRO LIVRO----------------------
-#             if comando == 'adicionar livro':
-
-#                 obra_1 = Obra
-
-#                 obra_1.adicionarTitulo(input('Titulo: '))
-#                 obra_1.adicionarSinopse(input('Sinopse: '))
-#                 nomeTmp = input('Autor: ')
-
-#                 if nomeTmp == autor_1.nome:
-#                     obra_1.adicionarAutor(autor_1)
-
-#                     print(obra_1.autor)
-
-#                 else:
-#                     print('Autor nao existe')
-
-#         # --------------------FINALIZAR SISTEMA----------------------
-#         sair = input('[S]air: ').upper().startswith('S')
-#         if sair is True:
-#             break
