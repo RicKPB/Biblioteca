@@ -1,4 +1,4 @@
-# Biblioteca
+# Biblioteca | Linguagem Phyton 
 
 Sistema De Gestao de Biblioteca
 
@@ -7,7 +7,7 @@ Sistema De Gestao de Biblioteca
     -Desenvolvedor Diagrama | Felipe Dos Santos 
 
 <p align="center">
-  <img src="https://github.com/RicKPB/Biblioteca/assets/125623524/3bb68a61-428a-4c8c-bf7e-5931bf12a4a0" width="700px" />
+  <img src="https://thumbs2.imgbox.com/4c/de/RyixruKQ_t.png" width="700px" />
 </p>
 
 
