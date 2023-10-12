@@ -7,10 +7,12 @@ autor = Autor(nome=None, informacoes=None)
 editora = Editora(nome=None)
 
 autorTMP = Autor(nome=None, informacoes=None)
+editoraTMP = Editora(nome=None)
 
 lista_autores = []
-lista_editora = []
+lista_editoras = []
 lista_obras = []
+
 
 while True:
     selecao = input('[L]ogin | [R]egistrar | [F]inalizar: ').upper()
@@ -38,20 +40,28 @@ while True:
 
                     comando = input('Voce deseja realizar qual operacao: ')
 
-                    #           ADICIONAR OBRA
+    #   --------------------ADICIONAR OBRA----------------------      
                     if comando == 'Adicionar Obra':
                         
                         obra.adicionarTitulo()
                         obra.adicionarSinopse()
                         autorTMP.nome = input('Nome Autor: ')
+                        editoraTMP.nome = input('Nome Editora: ')
 
                         for nome_autor in lista_autores:
                             if autorTMP.nome == nome_autor.nome:
                                 obra.autor = autorTMP
                                 print('Autor Adicionado')
-                            
+                        
+                        for nome_editora in lista_editoras:
+                            if editoraTMP.nome == nome_editora.nome:
+                                obra.editora = editoraTMP
+                                print('Editora Adicionada')
+                        
+
+                        lista_obras.append(obra)
             
-                    #           ADICIONAR AUTOR    
+    #   --------------------ADICIONAR AUTOR----------------------      
                     elif comando == 'Adicionar Autor':
                         
                         autor.cadastroAutor()
@@ -62,11 +72,15 @@ while True:
                             autor.adicionarObra(obra)
 
 
-                    #           ADICIONAR EDITORA
+    #   --------------------ADICIONAR EDITORA----------------------                
                     elif comando == 'Adicionar Editora':
                         
                         editora.cadastroEditora()
-                        
+                        lista_editoras.append(editora)
+
+                        if editora.nome == obra.editora.nome:
+                           editora.adicionarEditora(editora)   
+                      
 
     #   --------------------FINALIZAR SISTEMA----------------------
                     sair = input('[S]air: ').upper().startswith('S')

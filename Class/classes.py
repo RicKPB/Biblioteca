@@ -43,6 +43,9 @@ class Editora:
     def cadastroEditora(self):
         self.nome = input('Nome: ')
 
+    def adicionarEditora(self, editora):
+        self.obras.append(editora)
+
 #----------------------------------------------------
 #                       lIVRO
 
@@ -68,7 +71,7 @@ class Obra:
         self.titulo = input('Titulo do Livro: ')
 
     def adicionarSinopse(self):
-        self.sinopise = input('Sinopse:')
+        self.sinopise = input('Sinopse: ')
     
 
 #----------------------------------------------------
