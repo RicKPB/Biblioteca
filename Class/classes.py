@@ -85,6 +85,10 @@ class Reserva:
         self.dataReserva = ...
         self.dataDevolucao = ...
 
+
+    def adiconarCodReserva(self):
+        self.codigoReserva += 1
+
 #----------------------------------------------------
 #                       USUARIO
 

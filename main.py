@@ -5,6 +5,7 @@ user = Usuario(nome=None, email= None, senha=None, administrador= None)
 obra = Obra(titulo=None, sinopise=None)
 autor = Autor(nome=None, informacoes=None)
 editora = Editora(nome=None)
+reserva = Reserva(codigoReserva=0)
 
 autorTMP = Autor(nome=None, informacoes=None)
 editoraTMP = Editora(nome=None)
@@ -12,6 +13,8 @@ editoraTMP = Editora(nome=None)
 lista_autores = []
 lista_editoras = []
 lista_obras = []
+lista_reservas = []
+lista_users = []
 
 
 while True:
@@ -20,6 +23,7 @@ while True:
     if selecao == 'R':
         user.adicionarUsuario()
         user.confirmacao_administrador()
+        lista_users.append(user)
 
     elif selecao == 'L':
 
@@ -81,7 +85,13 @@ while True:
                         if editora.nome == obra.editora.nome:
                            editora.adicionarEditora(editora)   
                       
+    #   --------------------ADICIONAR RESERVA---------------------- 
 
+                    elif comando == 'Adicionar Reserva':
+                        
+                        reserva.adiconarCodReserva()
+
+      
     #   --------------------FINALIZAR SISTEMA----------------------
                     sair = input('[S]air: ').upper().startswith('S')
                     if sair is True:
