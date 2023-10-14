@@ -8,6 +8,9 @@
 #----------------------------------------------------
 #                       AUTOR
 
+from mimetypes import init
+
+
 class Autor:
     def __init__(self, nome, informacoes) -> None:
         self.nome = nome
@@ -46,14 +49,6 @@ class Editora:
     def adicionarEditora(self, editora):
         self.obras.append(editora)
 
-#----------------------------------------------------
-#                       lIVRO
-
-class Livro:
-    def __init__(self, quantidadeTotal, quantidadeReservada) -> None:
-        self.quantidadeTotal = int(quantidadeTotal)
-        self.quantidadeReservada = int(quantidadeReservada)
-        self.reservas = [Reserva]
 
 #----------------------------------------------------
 #                       OBRA
@@ -72,8 +67,22 @@ class Obra:
 
     def adicionarSinopse(self):
         self.sinopise = input('Sinopse: ')
-    
 
+
+#----------------------------------------------------
+#                       lIVRO
+
+class Livro(Obra):
+    def __init__(self, titulo, autor, quantidadeLivros, quantidadeReservada):
+        super().__init__(titulo, autor)
+        self.quantidadeLivros = quantidadeLivros
+        self.quantidadeReservada = quantidadeReservada 
+        self.reservas = list[Reserva] 
+
+    def adicionarQuantLivros(self):
+        self.quantidadeLivros = input('Quantidade de livros: ')
+    
+        
 #----------------------------------------------------
 #                       RESERVA
 
@@ -88,6 +97,11 @@ class Reserva:
 
     def adiconarCodReserva(self):
         self.codigoReserva += 1
+    
+
+    def adidcionarReserva(self, livro):
+        self.livro = livro
+
 
 #----------------------------------------------------
 #                       USUARIO

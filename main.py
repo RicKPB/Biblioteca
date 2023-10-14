@@ -1,3 +1,4 @@
+import re
 from Class.classes import *
 
 
@@ -6,9 +7,11 @@ obra = Obra(titulo=None, sinopise=None)
 autor = Autor(nome=None, informacoes=None)
 editora = Editora(nome=None)
 reserva = Reserva(codigoReserva=0)
+livro = Livro(titulo=None, autor=None, quantidadeLivros=None, quantidadeReservada=None)
 
 autorTMP = Autor(nome=None, informacoes=None)
 editoraTMP = Editora(nome=None)
+livroTMP = Livro(titulo=None, autor=None, quantidadeLivros=None, quantidadeReservada=None)
 
 lista_autores = []
 lista_editoras = []
@@ -29,7 +32,8 @@ while True:
 
         login = input('Login: ')
         senha = input('Senha: ')
-
+    
+    #   --------------------LOGIN ADMINISTRADOR--------------------------
         if login == user.nome and senha == user.senha:
             if user.administrador is True:
                 while True:
@@ -83,13 +87,33 @@ while True:
                         lista_editoras.append(editora)
 
                         if editora.nome == obra.editora.nome:
-                           editora.adicionarEditora(editora)   
+                           editora.adicionarEditora(editora) 
+
+
+    #   --------------------ADICIONAR LIVRO---------------------- 
+                        elif comando == 'Adicionar Livro':
+                            for nome_obra in lista_obras:
+                                print(obra.titulo)
+
+                            __ = input('Livro: ')
+                            if __ == obra.titulo:
+                                livro.adicionarQuantLivros()
+                            print(f'{livro.quantidadeReservada}')
                       
     #   --------------------ADICIONAR RESERVA---------------------- 
 
                     elif comando == 'Adicionar Reserva':
                         
                         reserva.adiconarCodReserva()
+                        print(reserva.codigoReserva)
+
+                        livroTMP.titulo = input('Livro: ')
+
+                        for nome_obra in lista_obras:
+                            if livroTMP.titulo == obra.titulo:
+                                reserva.adidcionarReserva(livro=livroTMP)
+                                
+                                
 
       
     #   --------------------FINALIZAR SISTEMA----------------------
@@ -97,7 +121,7 @@ while True:
                     if sair is True:
                         break
                     
-
+    #   --------------------LOGIN USUARIO--------------------------
         elif login == user.nome and senha == user.senha:
             if user.administrador is not True:
                 while True:
