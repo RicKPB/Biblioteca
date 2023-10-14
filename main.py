@@ -1,4 +1,4 @@
-import re
+import os
 from Class.classes import *
 
 
@@ -39,84 +39,98 @@ while True:
                 while True:
                     print('Adiministrador Conectado\n')
 
-                    print('Adicionar Obra')
-                    print('Adicionar Autor')
-                    print('Adionar Editora')
-                    print('Adicionar Reserva')
-                    print('Finalizar Reserva')
-                    print('Consultar Acervo de Livros\n')
+                    print('[A]dicionar  |   [C]onsultar')
 
-                    comando = input('Voce deseja realizar qual operacao: ')
+                    comando = input('Voce deseja realizar qual operacao: ').upper()
+                    if comando == 'A':
+                        print('[O]bra | [A]utor | [E]ditora | [R]eserva | [L]ivro')
 
-    #   --------------------ADICIONAR OBRA----------------------      
-                    if comando == 'Adicionar Obra':
+                        comando = input('Qual Operacao: ').upper()
+                        #--------------------ADICIONAR OBRA----------------------      
+                        if comando == 'O':
                         
-                        obra.adicionarTitulo()
-                        obra.adicionarSinopse()
-                        autorTMP.nome = input('Nome Autor: ')
-                        editoraTMP.nome = input('Nome Editora: ')
+                            obra.adicionarTitulo()
+                            obra.adicionarSinopse()
+                            autorTMP.nome = input('Nome Autor: ')
+                            editoraTMP.nome = input('Nome Editora: ')
 
-                        for nome_autor in lista_autores:
-                            if autorTMP.nome == nome_autor.nome:
-                                obra.autor = autorTMP
-                                print('Autor Adicionado')
-                        
-                        for nome_editora in lista_editoras:
-                            if editoraTMP.nome == nome_editora.nome:
-                                obra.editora = editoraTMP
-                                print('Editora Adicionada')
-                        
+                            for nome_autor in lista_autores:
+                                if autorTMP.nome == nome_autor.nome:
+                                    obra.autor = autorTMP
+                                    print('Autor Adicionado')
+                            
+                            for nome_editora in lista_editoras:
+                                if editoraTMP.nome == nome_editora.nome:
+                                    obra.editora = editoraTMP
+                                    print('Editora Adicionada')
+                            
 
-                        lista_obras.append(obra)
+                            lista_obras.append(obra)
             
-    #   --------------------ADICIONAR AUTOR----------------------      
-                    elif comando == 'Adicionar Autor':
-                        
-                        autor.cadastroAutor()
-                        autor.cadastroInformacoes()
-                        lista_autores.append(autor)
+                        #--------------------ADICIONAR AUTOR----------------------      
+                        elif comando == 'A':
+                            
+                            autor.cadastroAutor()
+                            autor.cadastroInformacoes()
+                            lista_autores.append(autor)
 
-                        if autor.nome == obra.autor.nome:
-                            autor.adicionarObra(obra)
+                            if autor.nome == obra.autor.nome:
+                                autor.adicionarObra(obra)
+
+                        #--------------------ADICIONAR EDITORA----------------------                
+                        elif comando == 'E':
+                            
+                            editora.cadastroEditora()
+                            lista_editoras.append(editora)
+
+                            if editora.nome == obra.editora.nome:
+                                editora.adicionarEditora(editora) 
 
 
-    #   --------------------ADICIONAR EDITORA----------------------                
-                    elif comando == 'Adicionar Editora':
-                        
-                        editora.cadastroEditora()
-                        lista_editoras.append(editora)
-
-                        if editora.nome == obra.editora.nome:
-                           editora.adicionarEditora(editora) 
-
-
-    #   --------------------ADICIONAR LIVRO---------------------- 
-                        elif comando == 'Adicionar Livro':
+                        #--------------------ADICIONAR LIVRO---------------------- 
+                        elif comando == 'L':
                             for nome_obra in lista_obras:
                                 print(obra.titulo)
 
                             __ = input('Livro: ')
                             if __ == obra.titulo:
                                 livro.adicionarQuantLivros()
-                            print(f'{livro.quantidadeReservada}')
-                      
-    #   --------------------ADICIONAR RESERVA---------------------- 
+                               
+                        #--------------------ADICIONAR RESERVA---------------------- 
+                        elif comando == 'R':
+                            
+                            reserva.adiconarCodReserva()
+                            print(reserva.codigoReserva)
 
-                    elif comando == 'Adicionar Reserva':
-                        
-                        reserva.adiconarCodReserva()
-                        print(reserva.codigoReserva)
+                            livroTMP.titulo = input('Livro: ')
 
-                        livroTMP.titulo = input('Livro: ')
-
-                        for nome_obra in lista_obras:
-                            if livroTMP.titulo == obra.titulo:
-                                reserva.adidcionarReserva(livro=livroTMP)
+                            for nome_obra in lista_obras:
+                                if livroTMP.titulo == obra.titulo:
+                                    reserva.adidcionarReserva(livro=livroTMP)
                                 
-                                
+                    elif comando == 'C':
 
-      
-    #   --------------------FINALIZAR SISTEMA----------------------
+                        print('[O]bra | [A]utor | [E]ditora | [R]eserva | [L]ivro')
+
+                        comando = input('Qual Operacao: ').upper()
+
+                        if comando == 'O':
+                            os.system('cls')
+                            for obra.titulo in lista_obras:
+                                print(obra.titulo)
+
+                        if comando == 'A':
+                            pass
+
+                        if comando == 'E':
+                            pass
+
+                        if comando == 'R':
+                            pass
+
+                        if comando == 'L':
+                            pass 
+                    #   --------------------FINALIZAR SISTEMA----------------------
                     sair = input('[S]air: ').upper().startswith('S')
                     if sair is True:
                         break
@@ -126,6 +140,12 @@ while True:
             if user.administrador is not True:
                 while True:
                     print('Usuario Conectado')
+
+                    __ = input('Consultar Livros [S]im: ').upper()
+
+                    if __ == 'S':
+                        print(lista_obras)
+
 
     #   --------------------FINALIZAR SISTEMA----------------------
                     sair = input('[S]air: ').upper().startswith('S')

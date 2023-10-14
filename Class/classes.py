@@ -1,15 +1,7 @@
 #       ARQUIVO PARA A CRIACAO DE CLASSES PARA O SISTEMA
 
-
-
-
-
-
 #----------------------------------------------------
 #                       AUTOR
-
-from mimetypes import init
-
 
 class Autor:
     def __init__(self, nome, informacoes) -> None:
@@ -123,5 +115,5 @@ class Usuario:
 
         if adm == 'Sim':
             self.administrador = True
-        elif adm == 'Nao':
+        else:
             self.administrador = False
