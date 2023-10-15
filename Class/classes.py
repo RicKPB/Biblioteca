@@ -1,6 +1,6 @@
 #       ARQUIVO PARA A CRIACAO DE CLASSES PARA O SISTEMA
 from dataclasses import dataclass
-from datetime import date, datetime
+from datetime import datetime
 from tarfile import data_filter
 
 #----------------------------------------------------
@@ -21,6 +21,12 @@ class Autor:
     
     def adicionarObra(self, obra):
         self.obras.append(obra)
+
+    def consultarAutor(self):
+        return(f'Nome: {self.nome}\n'
+            f'Informacoes: {self.informacoes}\n'
+            f'Obras: {self.obras}'
+        )
 
 
 #----------------------------------------------------
@@ -67,7 +73,7 @@ class Obra:
         data_publicacao = input('Data YYYY-MM-DD: ')
 
         try:
-            self.dataPublicacao = datetime.strptime(data_publicacao, '%Y-%M-%D')
+            self.dataPublicacao = datetime.strptime(data_publicacao, '%Y-%m-%d')
         except ValueError:
             print('Formato de data invalido. Use YYYY-MM-DD.')
             self.dataPublicacao = None
@@ -121,7 +127,7 @@ class Reserva:
         dataTMP = input('Data Devolucao: YYYY-MM-DD')
 
         try:
-            self.dataDevolucao = datetime.strptime(dataTMP, '%Y-%M-%D')
+            self.dataDevolucao = datetime.strptime(dataTMP, '%Y-%m-%d')
         except ValueError:
             print('Formato de data invalido. Use YYYY-MM-DD.')
             self.dataDevolucao = None

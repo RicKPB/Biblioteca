@@ -93,7 +93,7 @@ while True:
                             lista_editoras.append(editora)
 
                             if editora.nome == obra.editora.nome:
-                                editora.adicionarEditora(editora) 
+                                editora.adicionarEditora(obra) 
 
 
                         #--------------------ADICIONAR LIVRO---------------------- 
@@ -141,7 +141,8 @@ while True:
 
                         if comando == 'A':
                             os.system('cls')
-                            pass
+                            
+                            print(autor.consultarAutor())
 
                         if comando == 'E':
                             os.system('cls')
