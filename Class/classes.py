@@ -1,9 +1,7 @@
 #       ARQUIVO PARA A CRIACAO DE CLASSES PARA O SISTEMA
-
-
-
-
-
+from dataclasses import dataclass
+from datetime import datetime
+from tarfile import data_filter
 
 #----------------------------------------------------
 #                       AUTOR
@@ -23,6 +21,12 @@ class Autor:
     
     def adicionarObra(self, obra):
         self.obras.append(obra)
+
+    def consultarAutor(self):
+        return(f'Nome: {self.nome}\n'
+            f'Informacoes: {self.informacoes}\n'
+            f'Obras: {self.obras}'
+        )
 
 
 #----------------------------------------------------
@@ -46,44 +50,88 @@ class Editora:
     def adicionarEditora(self, editora):
         self.obras.append(editora)
 
-#----------------------------------------------------
-#                       lIVRO
-
-class Livro:
-    def __init__(self, quantidadeTotal, quantidadeReservada) -> None:
-        self.quantidadeTotal = int(quantidadeTotal)
-        self.quantidadeReservada = int(quantidadeReservada)
-        self.reservas = [Reserva]
 
 #----------------------------------------------------
 #                       OBRA
 
 class Obra:
-    def __init__(self, titulo, sinopise):
+    def __init__(self, titulo, sinopise, data_publicacao):
         self.titulo = titulo
         self.autor = Autor(nome=None, informacoes=None)
         self.editora = Editora(nome=None)
         self.sinopise = sinopise
         self.idioma = ...
-        self.dataPublicacao = ...
+        self.dataPublicacao = data_publicacao
 
     def adicionarTitulo(self):
         self.titulo = input('Titulo do Livro: ')
 
     def adicionarSinopse(self):
         self.sinopise = input('Sinopse: ')
-    
 
+    def adicionarData(self, data_publicacao):
+        data_publicacao = input('Data YYYY-MM-DD: ')
+
+        try:
+            self.dataPublicacao = datetime.strptime(data_publicacao, '%Y-%m-%d')
+        except ValueError:
+            print('Formato de data invalido. Use YYYY-MM-DD.')
+            self.dataPublicacao = None
+
+    
+    def consultaObra(self):
+
+        return (f'Titulo: {self.titulo}\n'
+            f'Autor: {self.autor.nome}\n'
+            f'Editora: {self.editora.nome}\n'
+            f'Sinopise: {self.sinopise}\n'
+            f'Data Publicado: {self.dataPublicacao}')
+
+
+#----------------------------------------------------
+#                       lIVRO
+
+class Livro(Obra):
+    def __init__(self, titulo, autor, data_publicacao):
+        super().__init__(titulo, autor, data_publicacao)
+        self.quantidadeLivros = 0
+        self.quantidadeReservada = 0 
+        self.reservas = list[Reserva] 
+
+    def adicionarQuantLivros(self):
+        self.quantidadeLivros = input('Quantidade de livros: ')
+    
 #----------------------------------------------------
 #                       RESERVA
 
 class Reserva:
-    def __init__(self, codigoReserva) -> None:
+    def __init__(self, codigoReserva, data_Res, dataTMP) -> None:
         self.codigoReserva = int(codigoReserva)
         self.livro = Livro
         self.portador = Usuario
-        self.dataReserva = ...
-        self.dataDevolucao = ...
+        self.dataReserva = data_Res
+        self.dataDevolucao = dataTMP
+
+
+    def adiconarCodReserva(self):
+        self.codigoReserva += 1
+    
+
+    def adidcionarReserva(self, livro):
+        self.livro = livro
+    
+    def dataReservaRealizada(self):
+        self.dataReserva = datetime.now()
+    
+    def dataDaDevolucao(self, dataTMP):
+        dataTMP = input('Data Devolucao: YYYY-MM-DD')
+
+        try:
+            self.dataDevolucao = datetime.strptime(dataTMP, '%Y-%m-%d')
+        except ValueError:
+            print('Formato de data invalido. Use YYYY-MM-DD.')
+            self.dataDevolucao = None
+
 
 #----------------------------------------------------
 #                       USUARIO
@@ -105,5 +153,5 @@ class Usuario:
 
         if adm == 'Sim':
             self.administrador = True
-        elif adm == 'Nao':
+        else:
             self.administrador = False
