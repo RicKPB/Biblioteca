@@ -50,6 +50,11 @@ class Editora:
     def adicionarEditora(self, editora):
         self.obras.append(editora)
 
+    def consultarEditora(self):
+
+        return (f'Editora: {self.nome}\n'
+                f'Obras: {self.obras}')
+
 
 #----------------------------------------------------
 #                       OBRA
@@ -100,6 +105,16 @@ class Livro(Obra):
 
     def adicionarQuantLivros(self):
         self.quantidadeLivros = input('Quantidade de livros: ')
+
+    def consultarLivro(self):
+
+        livroTMP = input('Qaul livro deseja consultar: ')
+
+        if livroTMP in self.titulo:
+            return (f'Titulo: {self.titulo}\n'
+                    f'Quantidade De Livros: {self.quantidadeLivros}\n'
+                    f'Quantidade Resevada: {self.quantidadeReservada}\n'
+                    f'Reservas: {self.reservas}')
     
 #----------------------------------------------------
 #                       RESERVA
@@ -131,6 +146,15 @@ class Reserva:
         except ValueError:
             print('Formato de data invalido. Use YYYY-MM-DD.')
             self.dataDevolucao = None
+
+
+    def consultarReservas(self):
+
+        return (f'Serial: {self.codigoReserva}\n'
+                f'Livro: {self.livro}\n'
+                f'Portador: {self.portador}\n'
+                f'Data Reserva: {self.dataReserva}\n'
+                f'Data Devolucao: {self.dataDevolucao}')
 
 
 #----------------------------------------------------

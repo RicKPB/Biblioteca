@@ -146,15 +146,18 @@ while True:
 
                         if comando == 'E':
                             os.system('cls')
-                            pass
+                            
+                            print(editora.consultarEditora())
 
                         if comando == 'R':
                             os.system('cls')
-                            pass
+                            
+                            print(reserva.consultarReservas())
 
                         if comando == 'L':
                             os.system('cls')
-                            pass 
+                           
+                            print(livro.consultarLivro())
                     #   --------------------FINALIZAR SISTEMA----------------------
                     sair = input('[S]air: ').upper().startswith('S')
                     if sair is True:
