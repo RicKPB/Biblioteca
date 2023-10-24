@@ -24,9 +24,7 @@ class Autor:
 
     def consultarAutor(self):
         return(f'Nome: {self.nome}\n'
-            f'Informacoes: {self.informacoes}\n'
-            f'Obras: {self.obras}'
-        )
+            f'Informacoes: {self.informacoes}')
 
 
 #----------------------------------------------------
@@ -52,8 +50,7 @@ class Editora:
 
     def consultarEditora(self):
 
-        return (f'Editora: {self.nome}\n'
-                f'Obras: {self.obras}')
+        return (f'Editora: {self.nome}')
 
 
 #----------------------------------------------------
@@ -113,8 +110,7 @@ class Livro(Obra):
         if livroTMP in self.titulo:
             return (f'Titulo: {self.titulo}\n'
                     f'Quantidade De Livros: {self.quantidadeLivros}\n'
-                    f'Quantidade Resevada: {self.quantidadeReservada}\n'
-                    f'Reservas: {self.reservas}')
+                    f'Quantidade Resevada: {self.quantidadeReservada}')
     
 #----------------------------------------------------
 #                       RESERVA
@@ -134,6 +130,9 @@ class Reserva:
 
     def adidcionarReserva(self, livro):
         self.livro = livro
+
+    def adidcionarPortador(self, user):
+        self.portador = user
     
     def dataReservaRealizada(self):
         self.dataReserva = datetime.now()
@@ -179,3 +178,5 @@ class Usuario:
             self.administrador = True
         else:
             self.administrador = False
+
+    

@@ -12,6 +12,7 @@ livro = Livro(titulo=None, autor=None, data_publicacao=None)
 autorTMP = Autor(nome=None, informacoes=None)
 editoraTMP = Editora(nome=None)
 livroTMP = Livro(titulo=None, autor=None, data_publicacao=None)
+userTMP = Usuario(nome=None, email= None, senha=None, administrador= None)
 
 lista_autores = []
 lista_editoras = []
@@ -27,7 +28,9 @@ while True:
         user.adicionarUsuario()
         user.confirmacao_administrador()
         lista_users.append(user)
-
+        for usuario in lista_users:
+            print(usuario)
+            
     elif selecao == 'L':
 
         login = input('Login: ')
@@ -116,6 +119,11 @@ while True:
                             reserva.adiconarCodReserva()
                             print(reserva.codigoReserva)
 
+                            userTMP.nome = input('Digite o usuario: ')
+                            for nome_user in lista_users:
+                                if userTMP.nome == nome_user:
+                                    reserva.adidcionarPortador(user=userTMP)
+
                             livroTMP.titulo = input('Livro: ')
                             for nome_obra in lista_obras:
                                 if livroTMP.titulo == obra.titulo:
@@ -143,11 +151,15 @@ while True:
                             os.system('cls')
                             
                             print(autor.consultarAutor())
-
+                            if obra.autor.nome == autor.nome:
+                                print(obra.titulo)
+                            
                         if comando == 'E':
                             os.system('cls')
                             
                             print(editora.consultarEditora())
+                            if obra.editora.nome == editora.nome:
+                                print(obra.titulo)
 
                         if comando == 'R':
                             os.system('cls')
@@ -158,32 +170,39 @@ while True:
                             os.system('cls')
                            
                             print(livro.consultarLivro())
+                            for reservaTMP in lista_reservas:
+                                print(reservaTMP)
+
                     #   --------------------FINALIZAR SISTEMA----------------------
                     sair = input('[S]air: ').upper().startswith('S')
                     if sair is True:
                         break
                     
     #   --------------------LOGIN USUARIO--------------------------
-        elif login == user.nome and senha == user.senha:
-            if user.administrador is not True:
+        if login == user.nome and senha == user.senha:
+            if user.administrador is False:
                 while True:
                     print('Usuario Conectado')
 
-                    __ = input('Consultar Livros [S]im: ').upper()
+                    comando = input('Consultar [L]ivros || Minhas [R]eservas: ').upper()
 
-                    if __ == 'S':
+                    if comando == 'L':
                         print(lista_obras)
 
+                    if comando == 'R':
+                        
+                        if reserva.portador == user.nome:
+                            print(reserva)
 
     #   --------------------FINALIZAR SISTEMA----------------------
                     sair = input('[S]air: ').upper().startswith('S')
                     if sair is True:
                         break
-        
         else:
-            print('Algo de errado aconteceu!')
-            continue
-    
+            os.system('cls')
+
+            print('Login Incorreto')
+
     elif selecao == 'F':
         print('Sistema Finalizado')
         break
